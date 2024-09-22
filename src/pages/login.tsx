@@ -2,21 +2,22 @@ import { Field, Form, Formik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import { AuthApi } from '@/features/auth/api/auth-service'
 import { User } from '@/features/auth/dto/user'
-import { useDispatch } from 'react-redux'
-import { setUser } from '@/features/auth/store'
 import { AuthTokenStorage } from '@/helpers/auth-token-storage'
+import { useSetUserData } from '@/features/auth/hooks/use-set-user-data'
 
 export const Login = () => {
-    const dispatch = useDispatch()
+    const setUserData = useSetUserData()
 
     const loginMutation = useMutation({
         mutationFn: (values: { email: string; password: string }) =>
             AuthApi.login(values),
         onSuccess: user => {
             if (user instanceof User) {
-                AuthTokenStorage.setToken(user.getToken())
+                if (user.token) {
+                    AuthTokenStorage.setToken(user.token)
+                }
 
-                dispatch(setUser(user.toObject()))
+                setUserData(user)
             }
         },
     })

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { User } from '../dto/user'
+import { UserDto } from '../dto/user-dto'
 
 export const useUserQuery = () =>
     useQuery({
@@ -7,7 +7,7 @@ export const useUserQuery = () =>
         queryFn: async () => {
             // return Promise.resolve(null)
             return Promise.resolve(
-                new User(
+                new UserDto(
                     1,
                     'John',
                     'Doe',
@@ -16,7 +16,7 @@ export const useUserQuery = () =>
                 )
             )
             // const { data } = await apiClient.get('user')
-            // return User.fromObject(data.data)
+            // return UserDto.fromObject(data.data)
         },
         retry: false,
         refetchOnWindowFocus: false,
@@ -24,7 +24,7 @@ export const useUserQuery = () =>
     })
 
 // export const useUserQuery = () => {
-//     const [data, setData] = useState<User | null>(null)
+//     const [data, setData] = useState<UserDto | null>(null)
 //     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 //     const [error, setError] = useState<Error | null>(null)
 
@@ -32,7 +32,7 @@ export const useUserQuery = () =>
 //         const fetchData = async () => {
 //             try {
 //                 const response = await apiClient.get('user')
-//                 setData(User.fromObject(response.data.data))
+//                 setData(UserDto.fromObject(response.data.data))
 //                 setStatus('success')
 //             } catch (error) {
 //                 setStatus('error')

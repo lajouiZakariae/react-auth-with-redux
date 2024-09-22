@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux'
 import { setUser } from '../store'
-import { User } from '../dto/user'
+import { UserDto } from '../dto/user-dto'
 
 export const useSetUserData = () => {
     const dispatch = useDispatch()
 
-    return (data: User | undefined) => {
+    return (data: UserDto | undefined) => {
         /**
          * Destructure the User object to ensure only plain data properties are included
          * in the action payload, making it serializable.
