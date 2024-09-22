@@ -13,7 +13,7 @@ export const AuthenticationInitializer: FC<PropsWithChildren> = ({
         return <div> Loading...</div>
     }
 
-    if (isSuccess) {
+    if (isSuccess && data) {
         setUserData(data)
     }
 

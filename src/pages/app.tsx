@@ -30,6 +30,7 @@ export const App = () => {
             >
                 Log out
             </button>
+
             <h1>Hello world</h1>
         </>
     )
