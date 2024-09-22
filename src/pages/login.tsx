@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import { AuthApi } from '@/features/auth/api/auth-service'
-import { User } from '@/features/auth/dto/user'
+import { User } from '@/features/auth/dto/user-dto'
 import { AuthTokenStorage } from '@/helpers/auth-token-storage'
 import { useSetUserData } from '@/features/auth/hooks/use-set-user-data'
 
