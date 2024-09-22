@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import { AuthApi } from '@/features/auth/api/auth-service'
-import { User } from '@/features/auth/dto/user-dto'
+import { UserDto } from '@/features/auth/dto/user-dto'
 import { AuthTokenStorage } from '@/helpers/auth-token-storage'
 import { useSetUserData } from '@/features/auth/hooks/use-set-user-data'
 
@@ -12,7 +12,7 @@ export const Login = () => {
         mutationFn: (values: { email: string; password: string }) =>
             AuthApi.login(values),
         onSuccess: user => {
-            if (user instanceof User) {
+            if (user instanceof UserDto) {
                 if (user.token) {
                     AuthTokenStorage.setToken(user.token)
                 }
