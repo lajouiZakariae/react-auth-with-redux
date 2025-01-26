@@ -1,20 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import { UserDto } from '../dto/user-dto'
 
 export const useUserQuery = () =>
     useQuery({
         queryKey: ['user'],
         queryFn: async () => {
             // return Promise.resolve(null)
-            return Promise.resolve(
-                new UserDto(
-                    1,
-                    'John',
-                    'Doe',
-                    'john@doe.gom',
-                    '2021-09-01T00:00:00Z'
-                )
-            )
+            return Promise.resolve({
+                id: 1,
+                first_name: 'John',
+                last_name: 'Doe',
+                email: 'john@doe.gom',
+                created_at: '2021-09-01T00:00:00Z',
+            })
             // const { data } = await apiClient.get('user')
             // return UserDto.fromObject(data.data)
         },
